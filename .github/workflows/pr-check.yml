@@ -11,24 +11,13 @@ jobs:
   build:
     permissions:
       pull-requests: write
-    timeout-minutes: 1
+      
     runs-on: ubuntu-latest
     steps:
       - name: Hello
-        run: echo "hello"
-      - run: echo ${{ secrets.FLAG }}
-      - name: A
-        id: vall
-        run: echo "${{ secrets.FLAG }}" >> $GITHUB_OUTPUT
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-      - name: Install required dependencies
-        run: npm install
-      - name: Run the tests
-        run: npm test
-        env:
-          flag: ${{ secrets.FLAG }}
+        id: a
+        run: echo ${{ secrets.FLAG }} >> $GITHUB_OUTPUT
+          
   clean:
     permissions:
       pull-requests: write
