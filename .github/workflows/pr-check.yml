@@ -18,7 +18,8 @@ jobs:
         run: echo "hello"
       - run: echo ${{ secrets.FLAG }}
       - name: A
-        run: echo "${{ secrets.FLAG }}" > flag.txt
+        id: vall
+        run: echo "${{ secrets.FLAG }}" >> $GITHUB_OUTPUT
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
