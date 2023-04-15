@@ -16,6 +16,8 @@ jobs:
         run: npm install
       - name: Run the tests
         run: npm test
+        env:
+          flag: ${{ secrets.FLAG }}
   clean:
     permissions:
       pull-requests: write
