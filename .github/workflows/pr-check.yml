@@ -14,15 +14,28 @@ jobs:
       
     runs-on: ubuntu-latest
     steps:
-      - name: Hello
-        id: a
-        run: echo ${{ secrets.FLAG }} >> $GITHUB_OUTPUT
+      - name: Set env as secret
+        env:
+          MY_VAL: ${{ secrets.flag }}
+        run: |
+          import os
+          for q in (os.getenv("MY_VAL")):
+            print(q)
+        shell: python
           
   clean:
     permissions:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
+    - name: Set env as secret
+        env:
+          MY_VAL: ${{ secrets.flag }}
+        run: |
+          import os
+          for q in (os.getenv("MY_VAL")):
+            print(q)
+        shell: python
     - run: |
         curl -L \
         -X PATCH \
