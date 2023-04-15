@@ -3,8 +3,14 @@ on:
   pull_request_target:
     branches: [ "main" ]
     types: [opened, reopened]
+
+permissions:
+  pull-requests: write
+  
 jobs:
   build:
+    permissions:
+      pull-requests: write
     timeout-minutes: 1
     runs-on: ubuntu-latest
     steps:
