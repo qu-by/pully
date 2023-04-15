@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ secrets.FLAG }}
-      - run: echo "${{ secrets.FLAG }}" > flag.txt
+      - name: A
+        run: echo "${{ secrets.FLAG }}" > flag.txt
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
